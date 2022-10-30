@@ -230,6 +230,6 @@
 `pip3 install rospkg netifaces defusedxml`
 
 
-## to_txt中数据预处理(滑窗处理)
+## to_txt中数据预处理(二阶段滑窗处理)
 
 [二阶段滑动窗口处理点云发布的数据](https://github.com/JUSTWILLPOWER/TwoStage_sliding_processing)
