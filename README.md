@@ -140,15 +140,19 @@
 
 
 ### 需求
+
 `ubuntu-18.04版本`
 
 ### 安装ros
+
 [安装教程](http://wiki.ros.org/melodic/Installation/Ubuntu)
 
 首先安装必要软件
+
 `sudo apt install git curl vim -y `
 
 设置您的计算机以接受来自 packages.ros.org 的软件
+
 `sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'`
 
 设置您的密钥
@@ -160,17 +164,23 @@
 `sudo apt update`
 
 直接桌面完整安装
+
 `sudo apt install ros-melodic-desktop-full`
 
 环境设置
+
 `echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc`
+
 刷新环境
+
 `source ~/.bashrc`
 
 ### 使用 ti_mmwave_rospkg ROS 驱动程序
 
 此部分参考ti官网的ros教程
+
 位置为<kbd>mmwave_industrial_toolbox_4_10_1/labs/Robotics/ros_driver/docs/TI_mmWave_ROS_Driver_Users_Guide.html</kbd>
+
 [下载地址](https://dev.ti.com/tirex/explore/node?node=AN-1gXp4Kn1RRFC9mOFTZQ__VLyFKFf__LATEST&search=ros)
 
 
@@ -181,45 +191,63 @@
 执行此命令后，==请注销并重新登录到 Linux==，以便更改生效。
 
 从 git.ti.com 克隆 git 存储库。
+
 `git clone https://git.ti.com/git/mmwave_radar/mmwave_ti_ros.git`
 
 将目录更改为 ROS 驱动程序实验室。这是工作区目录。
+
 ` cd mmwave_ti_ros/ros_driver/`
-建立
+
+编译
+
 `catkin_make`
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/95118ff843674e418ccf0da8d0134cf3.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 刷新新环境
+
 `source devel/setup.bash`
+
 **注意:可以将其加入到.bashrc中，就不用每次都source了**
+
 `echo "source ~/mmwave_ti_ros/ros_driver/devel/setup.bash" >> ~/.bashrc`
 
 
 ### 硬件设置
+
 如果使用评估版单个EVM，那么首先要做的就是刷固件
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/06a3fcd1d13141daa69bafc2fd158e81.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_19,color_FFFFFF,t_70,g_se,x_16)
+
 将其拨到刷写模式，使用`uniflash`工具进行刷写
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d5c20caee3e241c18a14adf58902b829.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 其中固件为
+
 <kbd>\ti\mmwave_industrial_toolbox_4_10_1\labs\Out_Of_Box_Demo\prebuilt_binaries\xwr6843ISK_mmw_demo.bin</kbd>
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/99662d81394744c49595819c6f0a7fb5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_20,color_FFFFFF,t_70,g_se,x_16)
+
 选择串行口，而不是数据口
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6b97230bbf4b4aa7b195a83ac90b9511.png)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7c633e1102374de999abf7ce318a9ab0.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
 刷写完成后，将拨码开关拨到功能模式
+
 插入
+
 修改对应的文件
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dcaa47280a09435abf3c7e0e7a555e79.png)
 
 `6843_multi_3d_0.launch`
 
 修改数据端口
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8f347d6039664e1a80e1871c69856e83.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAX1dJTExQT1dFUl8=,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 
@@ -233,3 +261,12 @@
 ## to_txt中数据预处理(二阶段滑窗处理)
 
 [二阶段滑动窗口处理点云发布的数据](https://github.com/JUSTWILLPOWER/TwoStage_sliding_processing)
+
+
+## 数据下载得其它方式
+
+`使用谷歌网盘`
+[原始bag下载](https://drive.google.com/file/d/1F-Fc5RM2RJXaoVTqShp3G2QgYRYtW5tp/view?usp=sharing)
+[二级窗口处理后的RadHar数据集](https://drive.google.com/file/d/1H-65qrqO9R4FJv3KdfVPMsnocMAc3dWH/view?usp=sharing)
+[二级窗口处理后得STT(自己采集得)数据集](https://drive.google.com/file/d/1UWuFq_TgHIDLQrNPNtFrD18RejMa2Sy0/view?usp=sharing)
+
